@@ -14,26 +14,19 @@ int main() {
         cin >> s;
 
         int cnt = 0;
-        bool doesBreak = false;
+        for(int i=0; i < n; i++) {
 
-        for(int i=1; i < n-1; i++) {
-            if(s[i] == '#') continue;
-            else{
-                if(s[i-1] == '.' && s[i+1] == '.') {
-                    cnt+=2;
-                    doesBreak = true;
+            if(s[i] == '.') {
+                cnt++;
+            }
+
+            if(i > 0 && i < n-1) {
+                if(s[i-1] == '.' && s[i] == '.' && s[i+1] == '.') {
+                    cnt = 2;
                     break;
                 }
             }
-        }
-
-        if(!doesBreak) {
-            cnt = 0;
-            for(int i=0; i < n; i++) {
-                if(s[i] == '.') cnt+=1;
-            }
-        }
-
+        } 
         cout << cnt << endl;
     }
     
