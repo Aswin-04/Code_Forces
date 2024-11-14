@@ -1,19 +1,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+void solve() {
+    int n;
+    cin >> n;
+
+    if(n%3 != 0) cout << "First\n";
+    else cout << "Second\n";
+}
+
 int main() {
 
     int t;
-    cin >> t;
+    cin  >> t;
 
     while(t--) {
-
-        int n;
-        cin >> n;
-
-        if(n%3 == 0) cout << "Second" << endl;
-        else cout << "First" << endl;
+        solve();
     }
-    
+
     return 0;
 }

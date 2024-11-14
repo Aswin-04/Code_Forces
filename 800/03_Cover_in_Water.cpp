@@ -1,33 +1,35 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+void solve() {
+    int n;
+    cin >> n;
+
+    string s;
+    cin >> s;
+
+    for(int i=1; i < n-1; i++) {
+        if(s[i] == '.' && s[i-1] == '.' && s[i+1] == '.') {
+            cout << 2 << endl;
+            return;
+        }
+    }
+
+    int cnt = 0;
+    for(char ch: s) {
+        if(ch == '.') cnt++;
+    }
+
+    cout << cnt << endl;
+}
+
 int main() {
 
     int t;
     cin >> t;
 
     while(t--) {
-        int n;
-        cin >> n;
-
-        string s;
-        cin >> s;
-
-        int cnt = 0;
-        for(int i=0; i < n; i++) {
-
-            if(s[i] == '.') {
-                cnt++;
-            }
-
-            if(i > 0 && i < n-1) {
-                if(s[i-1] == '.' && s[i] == '.' && s[i+1] == '.') {
-                    cnt = 2;
-                    break;
-                }
-            }
-        } 
-        cout << cnt << endl;
+        solve();
     }
     
     return 0;
