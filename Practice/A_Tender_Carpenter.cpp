@@ -58,7 +58,21 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    
+    int n;
+    cin >> n;
+
+    vi arr(n);
+    for(auto &it: arr) cin >> it;
+
+    int cnt = 0;
+    for(int i=0; i < n-1; i++) {
+        if(2*min(arr[i], arr[i+1]) > max(arr[i], arr[i+1])) {
+            cout << "YES" << nline;
+            return;
+        }
+    }
+
+    cout << "NO" << nline;
 }
 
 int main() {
