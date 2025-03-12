@@ -5,16 +5,16 @@ void solve() {
     int n, x;
     cin >> n >> x;
 
-    vector<int> v(n);
-    for(auto &it: v) cin >> it;
+    vector<int> arr(n);
+    for(auto &it: arr) cin >> it;
 
-    int mmax = v[0];
+    int mmax = arr[0];
     for(int i=1; i < n; i++) {
-        mmax = max(mmax, v[i] - v[i-1]);
+        mmax = max(mmax, arr[i]-arr[i-1]);
     }
 
-    mmax = max(mmax, 2* (x - v[n-1]));
-    cout << mmax << '\n';
+    mmax = max(mmax, 2*(x-arr[n-1]));
+    cout << mmax << endl;
 }
 
 int main() {

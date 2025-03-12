@@ -8,17 +8,18 @@ void solve() {
     string s;
     cin >> s;
 
+    int cnt = 0;
     for(int i=1; i < n-1; i++) {
-        if(s[i] == '.' && s[i-1] == '.' && s[i+1] == '.') {
+        if(s[i] == '#') continue;
+        cnt++;
+        if(s[i-1] == s[i] && s[i] == s[i+1]) {
             cout << 2 << endl;
             return;
         }
     }
 
-    int cnt = 0;
-    for(char ch: s) {
-        if(ch == '.') cnt++;
-    }
+    if(s[0] == '.') cnt++;
+    if(s[n-1] == '.' && n > 1) cnt++;
 
     cout << cnt << endl;
 }
