@@ -5,17 +5,15 @@ void solve() {
     int n;
     cin >> n;
 
-    vector<int> v(n);
-    for(auto &it: v) cin >> it;
-
-    for(int i=1; i < n; i++) {
-        if(v[i] < v[0]) {
-            cout << "NO\n";
+    vector<int> arr(n);
+    for(auto &i: arr) cin >> i;
+    for(int i: arr) {
+        if(i < arr[0]) {
+            cout << "NO" << endl;
             return;
         }
     }
-
-    cout << "YES\n";
+    cout << "YES" << endl;
 }
 
 int main() {
