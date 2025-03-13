@@ -2,11 +2,15 @@
 using namespace std;
 
 void solve() {
+
     int n;
     cin >> n;
 
-    if(n%3 != 0) cout << "First\n";
-    else cout << "Second\n";
+    if(n%3 == 0) {
+        cout << "Second" << endl;
+    }
+
+    else cout << "First" << endl;
 }
 
 int main() {
