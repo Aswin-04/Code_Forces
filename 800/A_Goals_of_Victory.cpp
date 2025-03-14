@@ -5,13 +5,14 @@ void solve() {
     int n;
     cin >> n;
 
-    vector<int> v(n-1);
-    for(auto &i: v) cin >> i;
+    long long sum=0;
+    vector<int> arr(n-1);
+    for(auto &i: arr) {
+        cin >> i;
+        sum+=i;
+    }
 
-    int ans = 0;
-
-    for(int i: v) ans+=i;
-    cout << 0-ans << endl;
+    cout << -1*sum << endl;
 }
 
 int main() {
