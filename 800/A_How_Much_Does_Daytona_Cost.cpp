@@ -2,17 +2,18 @@
 using namespace std;
 
 void solve() {
-    int  n, k;
+    int n, k;
     cin >> n >> k;
-    
-    vector<int> v(n);
-    for(auto &it: v) cin >> it;
 
-    if(find(v.begin(), v.end(), k) != v.end()) {
-        cout << "YES\n";
+    vector<int> arr(n);
+    int flag = 0;
+    for(auto &i: arr) {
+        cin >> i;
+        if(i == k) flag = 1;
     }
 
-    else cout << "NO\n";
+    if(flag) cout << "YES" << endl;
+    else cout << "NO" << endl;
 }
 
 int main() {
