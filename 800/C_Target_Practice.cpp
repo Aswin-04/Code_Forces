@@ -3,15 +3,15 @@ using namespace std;
 
 void solve() {
     int n=10;
-    vector<vector<char>> v(n, vector<char>(n));
+    vector<vector<char>> arr(n, vector<char>(n));
 
-    for(auto &it: v) {
-        for(auto &i: it) {
-            cin >> i;
+    for(auto &row: arr) {
+        for(auto &j: row) {
+            cin >> j;
         }
     }
 
-    vector<vector<int>> v1 = {
+    vector<vector<int>> points = {
         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
         {1, 2, 2, 2, 2, 2, 2, 2, 2, 1},
         {1, 2, 3, 3, 3, 3, 3, 3, 2, 1},
@@ -24,17 +24,14 @@ void solve() {
         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
     };
 
-    int sum = 0;
+    int ans = 0;
     for(int i=0; i < n; i++) {
         for(int j=0; j < n; j++) {
-            if(v[i][j] == 'X') {
-                sum+=v1[i][j];
-            }
+            if(arr[i][j] == 'X') ans+=points[i][j];
         }
     }
 
-    cout << sum << endl;
-    return;
+    cout << ans << endl;
 }
 
 int main() {
