@@ -6,17 +6,18 @@ void solve() {
     cin >> n >> m;
 
     string x, s;
-    cin >> x;
-    cin >> s;
+    cin >> x >> s;
 
-    int i = 0;
-    while(i < 6) {
+    int i=6;
+    int cnt = 0;
+
+    while(i--) {
         if(x.find(s) != string::npos) {
-            cout << i << endl;
+            cout << cnt << endl;
             return;
         }
+        cnt++;
         x+=x;
-        i++;
     }
 
     cout << -1 << endl;
