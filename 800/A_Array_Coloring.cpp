@@ -60,17 +60,15 @@ void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(int &i: v) cin >> i;
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
 
-    int odd = 0;
-    for(int i: v) {
-      if(i&1) odd++;
+    int cnt=0;
+    for(auto i: arr) {
+        if(i&1) cnt++;
     }
 
-    debug(odd)
-
-    if(odd&1) cout << "NO" << nline;
+    if(cnt&1) cout << "NO" << nline;
     else cout << "YES" << nline;
 }
 
