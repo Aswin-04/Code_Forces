@@ -5,12 +5,10 @@ void solve() {
     int n;
     cin >> n;
 
-    vector<int> v(n);
-    for(auto &i: v) cin >> i;
-
+    vector<int> arr(n);
     int mini = INT_MAX;
-    for(auto i: v) {
-        if(mini == 0) break;
+    for(auto &i: arr) {
+        cin >> i;
         mini = min(mini, abs(i));
     }
 
