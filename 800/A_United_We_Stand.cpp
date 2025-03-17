@@ -60,27 +60,33 @@ void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
 
-    sort(all(v), greater<int>());
-    vi b;
-    vi c;
+    sort(all(arr));
 
-    for(int i: v) {
-        if(i == v[0]) c.pb(i);
-        else b.pb(i);
-    }
-
-    if(b.empty()) {
+    if(arr[0] == arr[n-1]) {
         cout << -1 << nline;
         return;
-    } 
-    cout << sz(b) << " " << sz(c) << nline;
-    for(auto i: b) cout << i << " ";
-    cout << nline; 
-    for(int i: c) cout << i << " ";
+    }
+
+    int ctr = 0;
+    for(auto i: arr) {
+        if(i != arr[n-1]) ctr++;
+    }
+
+    cout << ctr << ' ' << n-ctr << nline;
+
+    for(int i=0; i < ctr; i++) {
+        cout << arr[i] << ' ';
+    }
     cout << nline;
+
+    for(int i=ctr; i < n; i++) {
+        cout << arr[i] << ' ';
+    }
+    cout << nline;
+
 
 }
 
