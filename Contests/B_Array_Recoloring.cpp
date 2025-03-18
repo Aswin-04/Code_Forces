@@ -64,13 +64,19 @@ void solve() {
     vll arr(n);
     for(auto &i: arr) cin >> i;
 
+    if(k == 1) {
+        ll left = *max_element(arr.begin(), arr.end()-1);
+        ll right = *max_element(arr.begin()+1, arr.end());
+        cout << max(left+arr.back(), right+arr[0]) << nline;
+        return;
+    }
+
     sort(all(arr), greater<int>());
     debug(arr)
     ll sum = 0;
-    for(int i=0; i < k; i++) {
+    for(int i=0; i <= k; i++) {
       sum+=arr[i];
     }
-    sum+=arr[k];
 
     cout << sum << nline;
 }
