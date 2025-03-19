@@ -62,7 +62,7 @@ void solve() {
 
     vi v(n);
     for(auto &i: v) cin >> i;
-
+ 
     if(!is_sorted(all(v))) {
       cout << 0 << nline;
       return;
@@ -73,7 +73,7 @@ void solve() {
       int val = abs(v[i]-v[i-1])/2;
       mini = min(mini, val+1);
     }
-
+ 
     cout << mini << nline;
     
 }
