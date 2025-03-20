@@ -55,11 +55,32 @@ template<class T, class V> void _print(map<T, V> m) {cerr << "[\n"; cerr << "  "
 template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 
 
-
 void solve() {
     int n, k, x;
     cin >> n >> k >> x;
-    
+
+    if(x != 1) {
+        cout << "YES" << nline;
+        cout << n << nline;
+        for(int i=1; i <= n; i++) cout << 1 << ' ';
+        cout << nline;
+    }
+
+    else if(k == 1 || (k == 2 && (n&1))) cout << "NO" << nline;
+    else {
+        cout << "YES" << nline;
+        int len = n/2;
+        cout << len << nline;
+        if(n&1) {
+            cout << 3 << ' ';
+            len--;
+        }
+
+        while(len--) {
+            cout << 2 << ' ';
+        }
+        cout << nline;
+    }
 }
 
 int main() {
