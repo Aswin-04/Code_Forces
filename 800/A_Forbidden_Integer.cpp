@@ -59,32 +59,7 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 void solve() {
     int n, k, x;
     cin >> n >> k >> x;
-
-    if(x != 1) {
-      cout << "YES" << nline;
-      cout << n << nline;
-      for(int i=0; i < n; i++) {
-        cout << 1 << " ";
-      }
-      cout << nline;
-    }
-
-    else if(k == 1 || (k == 2 && n%2 == 1)) cout << "NO" << nline;
-    else {
-      cout << "YES" << nline;
-      int len = n/2;
-      cout << len << nline;
-      
-      if(n&1) {
-        len--;
-        cout << 3 << " ";
-      } 
-
-      for(int i=0; i < len; i++) {
-        cout << 2 << " ";
-      }
-      cout << nline;
-    }
+    
 }
 
 int main() {
