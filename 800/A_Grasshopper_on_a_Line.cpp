@@ -60,8 +60,13 @@ void solve() {
     int x, k;
     cin >> x >> k;
 
-    if(x < k || x%k != 0) cout << 1 << nline << x << nline;
-    else cout << 2 << nline << x-1 << " " << 1 << nline;
+    if(x%k != 0) {
+        cout << 1 << nline << x << nline; 
+    }
+
+    else {
+        cout << 2 << nline << x-1 << ' ' << 1 << nline;
+    }
 }
 
 int main() {
