@@ -60,9 +60,8 @@ void solve() {
     int n, a, b;
     cin >> n >> a >> b;
 
-    if(n == a && n == b) cout << "Yes" << nline;
-    else if((n - (a+b)) <= 1) cout << "No" << nline;
-    else cout << "Yes" << nline;
+    if((n == a && n == b) || (n-(a+b) >= 2)) cout << "Yes" << nline;
+    else cout << "No" << nline;
 }
 
 int main() {
