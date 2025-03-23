@@ -63,19 +63,20 @@ void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
 
     for(int i=0; i < n; i++) {
       for(int j=i+1; j < n; j++) {
-        if(gcd(v[i], v[j]) <= 2) {
-          cout << "Yes" << nline;
+        if(gcd(arr[i], arr[j]) <= 2) {
+          cout << "YES" << nline;
           return;
         }
       }
     }
 
-    cout << "No" << nline;
+    cout << "NO" << nline;
+    
 }
 
 int main() {
