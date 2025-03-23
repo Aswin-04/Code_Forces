@@ -60,25 +60,17 @@ void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
 
     vi k;
     for(int i=0; i < n; i++) {
-      if(v[i] == 2) k.pb(i+1);
+      if(arr[i] == 2) k.pb(i+1);
     }
 
-    if(k.size() == 0) {
-      cout << 1 << nline;
-    }
-
-    else if(k.size()%2 == 1) {
-      cout << -1 << nline;
-    }
-    else {
-      int index = (k.size()/2)-1;
-      cout << k[index] << nline;
-    }
+    if(k.empty()) cout << 1 << nline;
+    else if(k.size()&1) cout << -1 << nline;
+    else cout << k[(k.size()/2)-1] << nline;
 }
 
 int main() {
