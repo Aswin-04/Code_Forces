@@ -60,14 +60,13 @@ void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
 
     int cnt = 0;
     for(int i=0; i < n-1; i++) {
-      if((v[i]&1) == (v[i+1]&1)) cnt++;
+        if(arr[i]%2 == arr[i+1]%2) cnt++;
     }
-
     cout << cnt << nline;
 }
 
