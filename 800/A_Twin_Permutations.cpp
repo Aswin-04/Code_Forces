@@ -60,11 +60,10 @@ void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
-
-    for(int i: v) {
-      cout << n-i+1 << " ";
+    vi arr(n);
+    for(auto &i: arr) {
+        cin >> i;
+        cout << n-i+1 << ' ';
     }
     cout << nline;
 }
