@@ -60,31 +60,21 @@ void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
 
-    int num = v[0];
-    int flag = 1;
-
-    for(int it: v) {
-      if(it != num) {
-        flag = 0;
-        break;
-      }
-    }
-
-    if(flag) {
-      cout << "NO" << nline;
+    if(arr[0] == arr[n-1]) {
+      cout << "NO" << nline; 
       return;
     }
 
     cout << "YES" << nline;
-    cout << v[n-1] << " ";
+    cout << arr[n-1] << ' ';
     for(int i=0; i < n-1; i++) {
-      cout << v[i] << " ";
+      cout << arr[i] << ' ';
     }
-
     cout << nline;
+    
 }
 
 int main() {
