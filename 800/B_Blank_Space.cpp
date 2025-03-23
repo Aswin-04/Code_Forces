@@ -57,23 +57,26 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n;
-    cin >> n;
+  int n;
+  cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+  vi arr(n);
+  for(auto &i: arr) cin >> i;
 
-    int cnt = 0;
-    int maxCnt = 0;
-    for(int i: v) {
-      if(i == 0) {
-        cnt++;
-        maxCnt = max(maxCnt, cnt);
-      }
-      else cnt = 0;
+  int cnt = 0;
+  int max_cnt = 0;
+
+  for(int val: arr) {
+    if(val == 0) {
+      cnt++;
+      continue;
     }
+    max_cnt = max(max_cnt, cnt);
+    cnt = 0;
+  }
 
-    cout << maxCnt << nline;
+  if(cnt) max_cnt = max(max_cnt, cnt);
+  cout << max_cnt << nline;
 }
 
 int main() {
