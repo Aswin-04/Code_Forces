@@ -47,12 +47,12 @@ void _print(double x) {cerr << x;}
 void _print(ull x) {cerr << x;}
 
 template<class T, class V> void _print(pair<T, V> p) {cerr << "{"; _print(p.ff); cerr << ","; _print(p.ss); cerr << "}"; }
-template<class T> void _print(vector<T> v) {cerr << "["; for (T i: v) {_print(i); cerr << " ";} cerr << "]";}
-template<class T> void _print(vector<vector<T>> v) {cerr << "[\n"; cerr << "  "; for(vector<T> i: v) {_print(i);} cerr << nline; cerr << "]";}
-template<class T> void _print(set<T> s) {cerr << "["; for (T i: s) {_print(i); cerr << " ";} cerr << "]";}
-template<class T> void _print(unordered_set<T> s) {cerr << "["; for (T i: s) {_print(i); cerr << " ";} cerr << "]";}
-template<class T, class V> void _print(map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
-template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
+template<class T> void _print(vector<T> v) {cerr << "["; for (T l: v) {_print(l); cerr << " ";} cerr << "]";}
+template<class T> void _print(vector<vector<T>> v) {cerr << "[\n"; cerr << "  "; for(vector<T> l: v) {_print(l);} cerr << nline; cerr << "]";}
+template<class T> void _print(set<T> s) {cerr << "["; for (T l: s) {_print(l); cerr << " ";} cerr << "]";}
+template<class T> void _print(unordered_set<T> s) {cerr << "["; for (T l: s) {_print(l); cerr << " ";} cerr << "]";}
+template<class T, class V> void _print(map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto l: m) {_print(l);} cerr << nline; cerr << "]";}
+template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto l: m) {_print(l);} cerr << nline; cerr << "]";}
 
 
 
@@ -63,19 +63,13 @@ void solve() {
     string s;
     cin >> s;
 
-    int i=0;
-    int j = n-1;
-
-    while(i <= j) {
-      if(s[i] == s[j]) {
-        cout << j-i+1 << nline;
-        return;
-      }
-      i++;
-      j--;
+    int l=0;
+    int r=n-1;
+    while(l < r && s[l] != s[r]) {
+      l++;
+      r--;
     }
-
-    cout << 0 << nline;
+    cout << r-l+1 << nline;
 }
 
 int main() {
