@@ -60,26 +60,12 @@ void solve() {
     int n;
     cin >> n;
 
-    if(n <= 9) {
-        cout << n << nline;
-        return;
+    int ans = 0;
+    while(n >= 10) {
+        n/=10;
+        ans+=9;
     }
-
-    int cnt = 0;
-    int val = 1;
-    int temp = n;
-
-    while(temp > 0) {
-        cnt++;
-        val*=10;
-        temp/=10;
-    }
-
-    cnt--;
-    val/=10;
-
-    cout << ((9*cnt) + (n/val)) << nline;
-    
+    cout << ans+n << nline;
 }
 
 int main() {
