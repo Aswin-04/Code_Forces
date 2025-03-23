@@ -57,34 +57,30 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n;
-    cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+  int n;
+  cin >> n;
 
-    int neg = 0;
-    int cnt = 0;
-    
-    for(int i: v) {
-      if(i != 1) neg++;
-    }
+  vi arr(n);
+  for(auto &i: arr) cin >> i;
 
-    int pos = n - neg;
+  int pos = 0;
+  int neg = 0;
 
-    if(neg > pos) {
-      cnt = neg - n/2;
-      neg = n/2;
-      pos = n-neg;
-    }
+  for(int val: arr) {
+    if(val == 1) pos++;
+    else neg++;
+  }
 
-    if(neg&1) {
-      cnt++;
-      neg--;
-      pos++;
-    }
+  int ans = 0;
+  while(pos < neg) {
+    pos++;
+    neg--;
+    ans++;
+  }
 
-    cout << cnt << nline;
+  if(neg&1) ans++;
+  cout << ans << nline;
 }
 
 int main() {
