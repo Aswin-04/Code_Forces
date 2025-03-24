@@ -56,41 +56,31 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 set<pii> possible_positions(int a, int b, int x, int y) {
-
   set<pii> sp;
-  sp.insert({x+a, y+b});
-  sp.insert({x+a, y-b});
-  sp.insert({x-a, y+b});
-  sp.insert({x-a, y-b});
-  sp.insert({x+b, y+a});
-  sp.insert({x+b, y-a});
-  sp.insert({x-b, y+a});
-  sp.insert({x-b, y-a});
-
-
+  sp.insert(mp(x+a, y+b));
+  sp.insert(mp(x+a, y-b));
+  sp.insert(mp(x-a, y+b));
+  sp.insert(mp(x-a, y-b));
+  sp.insert(mp(x+b, y+a));
+  sp.insert(mp(x+b, y-a));
+  sp.insert(mp(x-b, y+a));
+  sp.insert(mp(x-b, y-a));
   return sp;
 }
 
 void solve() {
-    int a, b, kx, ky, qx, qy;
-    cin >> a >> b;
-    cin >> kx >> ky;
-    cin >> qx >> qy;
+  int xk, yk, xq, yq, a, b;
+  cin >> a >> b >> xk >> yk >> xq >> yq;
 
-    set<pii> spk = possible_positions(a, b, kx, ky);
-    set<pii> spq = possible_positions(a, b, qx, qy);
-    debug(spk)
-    debug(spq)
-    int cnt = 0;
+  set<pii> spk = possible_positions(a, b, xk, yk);
+  set<pii> spq = possible_positions(a, b, xq, yq);
 
-    for(auto pi: spk) {
-      for(auto pj: spq) {
-        if(pi.first == pj.first && pi.second == pj.second) cnt++;
-      }
-    }
+  int cnt = 0;
+  for(auto el: spk) {
+    if(spq.find(el) != spq.end()) cnt++;
+  }
 
-    cout << cnt << nline;
-
+  cout << cnt << nline;
 }
 
 int main() {
