@@ -61,15 +61,10 @@ void solve() {
     cin >> n >> k >> x;
 
     ll low = (k*(k+1))/2;
-    ll high = 0;
+    ll high = ((n*(n+1))/2) - (((n-k)*(n-k+1))/2);
 
-    for(int i=n-k+1; i <= n; i++) {
-      high+=i;
-    }
-
-    if(x < low || x > high) cout << "NO" << nline;
-    else cout << "YES" << nline; 
-
+    if(x >= low && x <= high) cout << "YES" << nline;
+    else cout << "NO" << nline;
 }
 
 int main() {
