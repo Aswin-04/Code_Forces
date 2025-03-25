@@ -62,18 +62,16 @@ void solve() {
   string s;
   cin >> s;
 
-  vector<int> freq(26);
-  for(char c: s) {
-    freq[c-97]++;
-  }
-  
-  int odd = 0;
+  vi freq(26);
+  int odd_cnt = 0;
+
+  for(char ch: s) freq[ch-97]++;
   for(int i: freq) {
-    if(i%2 == 1) odd++;
+    if(i&1) odd_cnt++;
   }
 
-  if(k >= odd-1) cout << "YES" << nline;
-  else cout << "NO" << nline;
+  if(odd_cnt-k <= 1) cout << "YES" << nline;
+  else cout << "NO" << nline; 
 
 }
 
