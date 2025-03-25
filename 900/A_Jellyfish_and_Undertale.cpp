@@ -60,15 +60,13 @@ void solve() {
     ll a, b, n;
     cin >> a >> b >> n;
 
-    vll v(n);
-    for(auto &i: v) cin >> i;
-
-    ll ans = b;
-    for(ll i: v) {
-        ans+=(min(i, a-1));
+    vll arr(n);
+    ll ans = 0;
+    for(auto &i: arr) {
+        cin >> i;
+        ans+=min(i, a-1);
     }
-
-    cout << ans << endl;
+    cout << ans+b << nline;
 }
 
 int main() {
