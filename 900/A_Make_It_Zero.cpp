@@ -54,29 +54,26 @@ template<class T> void _print(unordered_set<T> s) {cerr << "["; for (T i: s) {_p
 template<class T, class V> void _print(map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 
-
-
 void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
 
     if(n&1) {
       cout << 4 << nline;
-      cout << 1 << " " << n << nline;
-      cout << 1 << " " << n-1 << nline;
-      cout << n-1 << " " << n << nline;
-      cout << n-1 << " " << n << nline;
+      cout << 1 << ' ' << n << nline;
+      cout << 1 << ' ' << n-1 << nline;
+      cout << n-1 << ' ' << n << nline;
+      cout << n-1 << ' ' << n << nline;
     }
 
     else {
       cout << 2 << nline;
-      cout << 1 << " " << n << nline;
-      cout << 1 << " " << n << nline;
+      cout << 1 << ' ' << n << nline;
+      cout << 1 << ' ' << n << nline;
     }
-
 }
 
 int main() {
