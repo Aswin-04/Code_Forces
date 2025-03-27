@@ -60,14 +60,9 @@ void solve() {
     ll n;
     cin >> n;
 
-    for(ll i=1; i <= n; i++) {
-      if(n%i != 0) {
-        cout << i-1 << endl;
-        return;
-      }
-    }
-
-    cout << n << endl;
+    int i=1;
+    while(n%i == 0) i++;
+    cout << i-1 << nline;
 }
 
 int main() {
