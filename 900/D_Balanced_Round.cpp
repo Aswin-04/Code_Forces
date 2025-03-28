@@ -55,28 +55,28 @@ template<class T, class V> void _print(map<T, V> m) {cerr << "[\n"; cerr << "  "
 template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 
 
-
 void solve() {
     int n, k;
     cin >> n >> k;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
 
-    sort(all(v));
+    sort(all(arr));
 
-    int cnt = 1;
-    int maxi = 1;
-    for(int i=0; i < n-1; i++) {
-      int val = v[i+1]-v[i];
-      if(val > k) {
-        cnt = 1;
-        continue;
+    int maxi = 0;
+    int cnt = 0;
+    for(int i=1; i < n; i++) {
+      if(arr[i]-arr[i-1] <= k) {
+        cnt++;
       }
-      cnt++;
-      maxi = max(maxi, cnt);
+      else {
+        maxi = max(maxi, cnt+1);
+        cnt=0;
+      }
     }
 
+    maxi = max(maxi, cnt+1);
     cout << n-maxi << nline;
 }
 
