@@ -54,25 +54,27 @@ template<class T> void _print(unordered_set<T> s) {cerr << "["; for (T i: s) {_p
 template<class T, class V> void _print(map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 
-
+int gcd(int a, int b) {
+    if(a == 0) return b;
+    return gcd(b%a, a);
+}
 
 void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
-
-    int ans = 0;
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
+    
+    int k=0;
     for(int i=0; i < n; i++) {
-      int val = abs(v[i]-i-1);
-      ans = __gcd(ans, val);
-      debug(val)
-      debug(ans)
+        k = gcd(k, abs(arr[i]-(i+1)));
     }
 
-    cout << ans << nline;
+    cout << k << nline;
 
+    // TC --> O(N logN)
+    // SC --> O(N)
 }
 
 int main() {
