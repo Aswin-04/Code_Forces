@@ -60,24 +60,18 @@ void solve() {
     int n, q;
     cin >> n >> q;
 
-    vll v(n);
-    for(auto &i: v) cin >> i;
+    vll arr(n);
+    for(auto &i: arr) cin >> i;
 
-    vll prefix_sum(n+1);
-    ll sum = 0;
-
-    for(int i=0; i < n; i++) {
-      sum+=v[i];
-      prefix_sum[i+1] = sum;
-    } 
-
-    while(q--) {
-      int l, r, k;
+    vll prefixSum(n+1, 0);
+    for(int i=0; i < n; i++) prefixSum[i+1] = prefixSum[i]+arr[i];
+    
+    for(int i=0; i < q; i++) {
+      ll l, r, k;
       cin >> l >> r >> k;
-
-      ll ans = prefix_sum[n] - (prefix_sum[r] - prefix_sum[l-1]) + k*(r-l+1);
-      if(ans&1) cout << "YES" << nline;
-      else cout << "NO" << nline; 
+      ll sum = prefixSum[n]-(prefixSum[r]-prefixSum[l-1])+((r-l+1)*k);
+      if(sum&1) cout << "YES" << nline;
+      else cout << "NO" << nline;
     }
 }
 
