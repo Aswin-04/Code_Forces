@@ -60,17 +60,17 @@ void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) {
+    vi arr(n);
+    for(auto &i: arr) {
       cin >> i;
       if(i == 1) i++;
     }
 
     for(int i=1; i < n; i++) {
-      if(v[i]%v[i-1] == 0) v[i]++;
+      if(arr[i]%arr[i-1] == 0) arr[i]++;
     }
 
-    for(auto i: v) cout << i << " ";
+    for(int val: arr) cout << val << ' ';
     cout << nline;
 }
 
