@@ -60,32 +60,29 @@ void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
 
     int ans = INT_MIN;
 
     if(n == 1) {
-      cout << 0 << nline;
+      cout << 0 << nline; 
       return;
     }
 
-    for(int i=0; i < n-1; i++) {
-      ans =  max(ans, v[n-1]-v[i]);
-      debug(v[n-1]-v[i])
-    }
-
-    for(int i=1; i < n; i++) {
-      ans = max(ans, v[i]-v[0]);
-      debug(v[i]-v[0])
+    for(int i=1; i<n; i++) {
+      ans = max(ans, arr[i]-arr[0]);
     }
 
     for(int i=0; i < n-1; i++) {
-      ans = max(ans, v[i]-v[i+1]);
-      debug(v[i]-v[i+1])
+      ans = max(ans, arr[n-1]-arr[i]);
     }
+
+    for(int i=0; i < n-1; i++) {
+      ans = max(ans, arr[i]-arr[i+1]);
+    }
+
     cout << ans << nline;
-
 }
 
 int main() {
