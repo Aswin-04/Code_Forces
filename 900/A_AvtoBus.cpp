@@ -60,11 +60,8 @@ void solve() {
     ll n;
     cin >> n;
 
-    if(n&1 || n == 2) {
-      cout << -1 << nline;
-      return;
-    }
-    cout << (n+5)/6 << " " << (n/4) << nline;
+    if(n&1 || n == 2) cout << -1 << nline;
+    else cout << (n+5)/6 << ' ' << n/4 << nline;
 }
 
 int main() {
