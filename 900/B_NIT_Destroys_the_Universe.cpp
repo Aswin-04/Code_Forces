@@ -60,24 +60,24 @@ void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
 
-    int cnt = 0;
-    int ans = 0;
+    int i=0;
+    int res=0;
+    int cnt=0;
 
-    for(int i: v) {
-      if(i == 0) {
-        if(cnt) ans++;
-        cnt = 0;
+    for(int val: arr) {
+      if(val == 0) {
+        res+=cnt;
+        cnt=0;
       }
+
       else cnt=1;
     }
 
-    if(cnt) ans++;
-    if(ans > 2) ans=2;
-    cout << ans << nline;
-
+    res+=cnt;
+    cout << min(res, 2) << nline; 
 }
 
 int main() {
