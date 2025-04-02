@@ -60,26 +60,25 @@ void solve() {
     int n;
     cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i; 
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
 
     int cnt = 0;
     int flag = 0;
-
     for(int i=n-2; i >= 0; i--) {
-      if(v[i+1] == 0) {
+      if(arr[i+1] == 0) {
         flag = 1;
         break;
       }
-
-      while(v[i] >= v[i+1]) {
-        v[i] = v[i]/2;
+      while(arr[i] != 0 && arr[i] >= arr[i+1]) {
+        arr[i]/=2;
         cnt++;
       }
     }
 
-    if(flag) cnt = -1;
-    cout << cnt << nline;
+    debug(arr)
+    if(flag) cout << -1 << nline;
+    else cout << cnt << nline;
 
 
 }
