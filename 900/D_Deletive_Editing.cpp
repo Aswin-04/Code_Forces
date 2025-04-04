@@ -54,51 +54,34 @@ template<class T> void _print(unordered_set<T> s) {cerr << "["; for (T i: s) {_p
 template<class T, class V> void _print(map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 
+// TC --> O(sizeof S)
+// SC --> O(26)
+
 void solve() {
   string s, t;
   cin >> s >> t;
 
-  int m = sz(s);
-  int n = sz(t);
+  vector<int> arr(26);
+  bool f=0;
 
-  map<char, int> smp;
-  map<char, int> tmp;
+	int j=sz(t)-1;
+  for(int i=sz(s)-1; i >=0 && j >=0; i--) {
+		if(s[i] == t[j]) {
+			j--;
+			if(arr[s[i]-'A'] > 0) {
+				f=1;
+				break;
+			}
+		}
 
-  for(char c: s) {
-    smp[c]++;
-  }
+		else {
+			arr[s[i]-'A']++;
+		}
+	}
 
-  for(char c: t) {
-    tmp[c]++;
-  }
+	if(f || j != -1) cout << "NO" << nline;
+	else cout << "YES" << nline;
 
-  int i=0, j=0;
-
-  while(i < m && j < n) {
-
-    if(s[i] == t[j]) {
-      if(smp[s[i]] < tmp[t[j]]) {
-        cout << "NO" << nline;
-        return;
-      }
-
-      else if(smp[s[i]] == tmp[t[j]]) {
-        tmp[t[j]]--;
-        j++;
-      }
-    }
-
-    smp[s[i]]--;
-    i++;
-  }
-
-  if(j == n) {
-    cout << "YES" << nline;
-  }
-
-  else cout << "NO" << nline;
-
-  
 }
 
 int main() {
