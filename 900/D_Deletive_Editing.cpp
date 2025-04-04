@@ -81,7 +81,6 @@ void solve() {
 
 	if(f || j != -1) cout << "NO" << nline;
 	else cout << "YES" << nline;
-
 }
 
 int main() {
