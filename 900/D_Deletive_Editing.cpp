@@ -64,23 +64,23 @@ void solve() {
   vector<int> arr(26);
   bool f=0;
 
-	int j=sz(t)-1;
+  int j=sz(t)-1;
   for(int i=sz(s)-1; i >=0 && j >=0; i--) {
-		if(s[i] == t[j]) {
-			j--;
-			if(arr[s[i]-'A'] > 0) {
-				f=1;
-				break;
-			}
-		}
-
-		else {
-			arr[s[i]-'A']++;
-		}
+    if(s[i] == t[j]) {
+	  j--;
+	  if(arr[s[i]-'A'] > 0) {
+	    f=1;
+		break;
+	  }
 	}
 
-	if(f || j != -1) cout << "NO" << nline;
-	else cout << "YES" << nline;
+	else {
+	  arr[s[i]-'A']++;
+	}
+  }
+
+  if(f || j != -1) cout << "NO" << nline;
+  else cout << "YES" << nline;
 }
 
 int main() {
