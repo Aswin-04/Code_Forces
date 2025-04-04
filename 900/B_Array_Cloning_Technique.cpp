@@ -54,44 +54,30 @@ template<class T> void _print(unordered_set<T> s) {cerr << "["; for (T i: s) {_p
 template<class T, class V> void _print(map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 
-
+// TC --> O(N)
+// SC --> O(N)
 
 void solve() {
-    int n;
-    cin >> n;
+  int n;
+  cin >> n;
 
-    vi v(n);
-    map<int, int> mp;
+  vi arr(n);
+  int maxi = 0;
+  map<int, int> freq;
+  for(auto &i: arr) {
+    cin >> i;
+    freq[i]++;
+    maxi = max(maxi, freq[i]);
+  }
 
-    for(int i=0; i < n; i++) {
-      cin >> v[i];
-      mp[v[i]]++;
-    }
+  int op = 0;
+  while(maxi < n) {
+    int d = min(maxi, n-maxi);
+    op+=(d+1);
+    maxi+=d;
+  }
 
-    ll ops = 0;
-    ll freq = INT_MIN;
-
-    for(auto pr: mp) {
-      freq = max(freq, 1LL*pr.second);
-    }
-
-    while(freq < n) {
-      ops++;
-      if(freq < (n-freq)) {
-        ops+=freq;
-        freq*=2;
-      }
-
-      else {
-        ops+=(n-freq);
-        break;
-      }
-    }
-
-    cout << ops << nline;
-    return;
-    
-     
+  cout << op << nline;
 }
 
 int main() {
