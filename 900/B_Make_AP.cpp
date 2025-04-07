@@ -57,22 +57,17 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int a, b, c;
-    cin >> a >> b >> c;
+  int a, b, c;
+  cin >> a >> b >> c;
 
-    debug((2*b-c)/a );
-    debug((c+a)/(2*b))
-    debug((2*b-a)/c)
+  debug((2*b-c)%a)
+  debug(0%1)
 
-    if(((2*b-c)%a == 0 && (2*b-c)/a > 0 ) || 
-       ((c+a)%(2*b) == 0 && (c+a)/(2*b) > 0) || 
-       ((2*b-a)%c == 0 && (2*b-a)/c > 0)) {
-
-        cout << "YES" << nline;
-    }
-
-    else cout << "NO" << nline;
-
+  if( ((2*b-c)%a == 0 && (2*b-c)/a > 0) ||
+      ((c+a)%(2*b) == 0 && (c+a)/(2*b) > 0) || 
+      ((2*b-a)%c == 0 && (2*b-a)/c > 0)
+    ) cout << "YES" << nline;
+  else cout << "NO" << nline;
 }
 
 int main() {
