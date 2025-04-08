@@ -60,13 +60,13 @@ void solve() {
     ll x, n;
     cin >> x >> n;
     
-    ll ans;
-    if(n%4 == 0) ans = x;
-    else if(n%4 == 1) ans = (x&1)? x+n : x-n;
-    else if(n%4 == 2) ans = (x&1)? x-1 : x+1;
-    else ans = (x&1)? x-(n+1) : x+(n+1);
+    ll res;
+    if(n%4 == 1) res = (x&1) ? x+n : x-n;
+    else if(n%4 == 2) res = (x&1) ? x-1 : x+1;
+    else if(n%4 == 3) res = (x&1) ? x-n-1 : x+n+1;
+    else res = x;
 
-    cout << ans << nline;
+    cout << res << nline;
 }
 
 int main() {
