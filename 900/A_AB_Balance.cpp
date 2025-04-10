@@ -60,13 +60,8 @@ void solve() {
     string s;
     cin >> s;
 
-    if(s[0] == s[sz(s)-1]) {
-      cout << s << nline;
-      return;
-    }
-
-    s[0] = s[sz(s)-1];
-    cout << s << nline;
+    if(s[0] == s[sz(s)-1]) cout << s << nline;
+    else cout << s.substr(0, sz(s)-1) + s[0] << nline;
 }
 
 int main() {
