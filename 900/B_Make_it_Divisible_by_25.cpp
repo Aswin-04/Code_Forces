@@ -55,42 +55,40 @@ template<class T> void _print(unordered_set<T> s) {cerr << "["; for (T i: s) {_p
 template<class T, class V> void _print(map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; cerr << "  "; for(auto i: m) {_print(i);} cerr << nline; cerr << "]";}
 
-ll ops(string last_two, string num) {
 
-  int ld = last_two[1];
-  int sld = last_two[0];
+ll helper(string s, string t) {
 
-  int steps = 0;
-  int i=sz(num)-1;
-  while(i > 0 && num[i] != ld) {
+  int i = s.size()-1;
+  int cnt = 0;
+  while(i >= 0 && s[i] != t[1]) {
     i--;
-    steps++;
-  } 
+    cnt++;
+  }
+  i--;
+  if(i < 0) return INF;
 
-  int j = i-1;
-  while(j >= 0 && num[j] != sld) {
-    j--;
-    steps++;
+  while(i >= 0 && s[i] != t[0]) {
+    i--;
+    cnt++;
   }
 
-  return steps;
-  
+  if(i < 0) return INF;
+  return cnt;
 }
 
+
 void solve() {
-    ll n;
-    cin >> n;
+  string s;
+  cin >> s;
 
-    string num = to_string(n);
-    vs last_two = {"25", "50", "75", "00"};
+  vs subseqs = {"25", "50", "75", "00"};
+  ll mn = INF;
 
-    ll mini = INF;
-    for(string s: last_two) {
-      mini = min(mini, ops(s, num));
-    }
+  for(string t: subseqs) {
+    mn = min(mn, helper(s, t));
+  }
 
-    cout << mini << nline;
-
+  cout << mn << nline;
 }
 
 int main() {
