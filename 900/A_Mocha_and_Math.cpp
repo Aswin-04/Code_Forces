@@ -57,13 +57,13 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n;
-    cin >> n;
+  int n;
+  cin >> n;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
-    int ans = accumulate(all(v), v[0], bit_and<int>());
-    cout << ans << nline;
+  vi arr(n);
+  for(auto &i: arr) cin >> i;
+  int res = accumulate(all(arr), arr[0], bit_and<int>());
+  cout << res << nline;
 }   
 
 int main() {
