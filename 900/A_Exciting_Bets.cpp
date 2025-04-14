@@ -57,18 +57,17 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    ll a, b;
-    cin >> a >> b;
+  ll a, b;
+  cin >> a >> b;
 
-    if(b > a) swap(a, b);
+  if(a == b) {
+    cout << "0 0" << nline;
+    return;
+  }
 
-    if(a == b) {
-      cout << "0 0" << nline;
-      return;
-    }
-    ll gcd = a-b;
-    ll moves = min(b%gcd, gcd-(b%gcd));
-    cout << gcd << " " << moves << nline;
+  if(b > a) swap(a, b);
+  ll g = a-b;
+  cout << g << ' ' << min(b%g, g-(b%g)) << nline;
 }
 
 int main() {
