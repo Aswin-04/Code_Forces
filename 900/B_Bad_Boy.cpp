@@ -58,7 +58,7 @@ void solve() {
     int n, m, i, j;
     cin >> n >> m >> i >> j;
 
-    cout << 1 << " " << 1 << " " << n << " " << m << nline;
+    cout << "1 1 " << n << ' ' << m << nline;
 }
 
 int main() {
