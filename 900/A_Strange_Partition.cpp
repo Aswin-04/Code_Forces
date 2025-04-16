@@ -57,22 +57,20 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n, x;
-    cin >> n >> x;
+  int n, x;
+  cin >> n >> x;
 
-    vi v(n);
-    for(auto &i: v) cin >> i;
+  vi arr(n);
+  ll min_beauty = 0;
+  ll max_beauty = 0;
+  for(auto &i: arr) {
+    cin >> i;
+    min_beauty+=i;
+    max_beauty += ((i+x-1)/x);
+  }
 
-    ll max_beauty = 0;
-    ll sum = 0;
-    for(int i: v) {
-      sum+=i;
-      max_beauty+=((i+x-1)/x);
-    }
-
-    ll min_beauty = (sum+x-1)/x;
-
-    cout << min_beauty << " " << max_beauty << nline;
+  min_beauty = (min_beauty+x-1)/x;
+  cout << min_beauty << ' ' << max_beauty << nline;
 }
 
 int main() {
