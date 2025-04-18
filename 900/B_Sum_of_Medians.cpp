@@ -58,22 +58,22 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n, k;
-    cin >> n >> k;
+  int n, k;
+  cin >> n >> k;
 
-    vi v(n*k);
-    for(auto &i: v) cin >> i;
+  vi arr(n*k);
+  for(auto &i: arr) cin >> i;
 
-    int i = (n*k);
-    ll sum = 0;
-    while(k > 0) {
-      i-=((n/2)+1);
-      sum+=v[i];
-      k--;
+  int i = n*k;
+  ll sum = 0;
+  
+  while(k > 0) {
+    i-=((n/2)+1);
+    sum+=arr[i];
+    k--;
+  }
 
-    }
-
-    cout << sum << nline;
+  cout << sum << nline;
 }
 
 int main() {
