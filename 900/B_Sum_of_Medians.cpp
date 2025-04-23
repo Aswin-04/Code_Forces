@@ -65,15 +65,14 @@ void solve() {
   for(auto &i: arr) cin >> i;
 
   int i = n*k;
-  ll sum = 0;
-  
-  while(k > 0) {
+  int ans = 0;
+
+  while(k--) {
     i-=((n/2)+1);
-    sum+=arr[i];
-    k--;
+    ans+=arr[i];
   }
 
-  cout << sum << nline;
+  cout << ans << nline;
 }
 
 int main() {
