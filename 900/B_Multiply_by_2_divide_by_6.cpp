@@ -62,25 +62,20 @@ void solve() {
     cin >> n;
 
     int temp = n;
-    int cnt_two = 0;
-    int cnt_three = 0;
+    int cnt2 = 0;
+    int cnt3 = 0;
 
-    while(temp > 0 && temp%3 == 0) {
-      cnt_three++;
-      temp/=3;
-    }
-
-    while(temp > 0 && temp%2 == 0) {
-      cnt_two++;
+    while(temp > 1 && temp%2 == 0) {
+      cnt2++;
       temp/=2;
     }
+    while(temp > 1 && temp%3 == 0) {
+      cnt3++;
+      temp/=3;
+    } 
 
-    debug(cnt_two);
-    debug(cnt_three);
-    
-    if(temp > 1 || cnt_two > cnt_three) cout << -1 << nline;
-    else cout << cnt_three + (cnt_three - cnt_two) << nline;
-    
+    if(temp > 1 || cnt2 > cnt3) cout << -1 << nline;
+    else cout << (cnt3-cnt2)+cnt3 << nline;
 }
 
 int main() {
