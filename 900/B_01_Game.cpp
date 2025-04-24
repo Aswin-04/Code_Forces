@@ -62,14 +62,14 @@ void solve() {
     cin >> s;
 
     int cnt0 = 0;
-    for(char c: s) {
-      if(c == '0') cnt0++;
+    int cnt1 = 0;
+    for(char ch: s) {
+      if(ch == '0') cnt0++;
+      else cnt1++;
     }
-    int cnt1 = sz(s)-cnt0;
 
-    if((min(cnt0, cnt1))%2 == 0) cout << "NET" << nline;
+    if(min(cnt0, cnt1)%2 == 0) cout << "NET" << nline;
     else cout << "DA" << nline;
-
 }
 
 int main() {
