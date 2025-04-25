@@ -58,49 +58,19 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    string s;
-    cin >> s;
+  string s;
+  cin >> s;
 
-    int cnt1 = 0;
-    int cnt0 = 0;
+  vi cnt = {0, 0};
 
-    for(char c: s) {
-      if(c == '0') cnt0++;
-      else cnt1++;
-    }
-
-    string t = "";
-    int i = 0;
-    while(cnt1 > 0 && cnt0 > 0 && i < s.size()) {
-      if(s[i] == '0') {
-        t+='1';
-        cnt1--;
-      }
-
-      else {
-        t+='0';
-        cnt0--;
-      }
-
-      i++;
-    }
-
-    while(i < s.size() && s[i] == '0' && cnt1 > 0) {
-      t+='1';
-      cnt1--;
-      i++;
-    }
-
-    while(i < s.size() && s[i] == '1' && cnt0 > 0) {
-      t+='0';
-      cnt0--;
-      i++;
-    }
-
-    debug(cnt0)
-    debug(cnt1)
-
-    cout << max(cnt1, cnt0) << nline;
+  int n = s.size();
+  for(char ch: s) cnt[ch-'0']++;
+  int i=0;
+  for(i=0; i < n; i++) {
+    if(cnt['1'- s[i]] == 0) break;
+    cnt['1'-s[i]]--;
+  }
+  cout << n-i << nline;
 }
 
 int main() {
