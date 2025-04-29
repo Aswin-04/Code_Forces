@@ -58,44 +58,37 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n, p;
-    cin >> n >> p;
+  int n, p;
+  cin >> n >> p;
 
-    vi a(n);
-    vi b(n);
+  vi arr(n);
+  vi brr(n);
 
-    for(auto &i: a) cin >> i;
-    for(auto &i: b) cin >> i;
+  for(auto &i: arr) cin >> i;
+  for(auto &i: brr) cin >> i;
 
-    vector<pii> cost_pairs;
-    cost_pairs.pb(mp(p, n));
+  vector<pii> cost_pairs;
+  cost_pairs.pb(mp(p, n));
+  for(int i=0; i < n; i++) {
+    cost_pairs.pb(mp(brr[i], arr[i]));
+  }
+  sort(all(cost_pairs));
 
-    for(int i=0; i < n; i++) {
-      cost_pairs.pb(mp(b[i], a[i]));
-    }
+  debug(cost_pairs)
 
-    sort(cost_pairs.begin(), cost_pairs.end());
+  ll min_cost = p;
+  int i=0;
+  int rem = n-1;
 
-    ll min_cost = p;
-    int cnt = 1;
-    int i = 0;
+  while(rem) {
+    int cost = cost_pairs[i].first;
+    int residents = cost_pairs[i].second;
+    min_cost+=(1LL*min(residents, rem)*cost);
+    rem-=min(residents, rem);
+    i++;
+  }
 
-    while(cnt < n) {
-      int cost = cost_pairs[i].first;
-      int residents = cost_pairs[i].second;
-
-      if(cnt+residents > n) {
-        min_cost = min_cost + (1LL * cost * (n-cnt));
-        break;
-      }
-
-      min_cost = min_cost + (1LL * cost * residents);
-      cnt+=residents;
-      i++;
-    }
-
-    cout << min_cost << nline;
-    
+  cout << min_cost << nline;
 }
 
 int main() {
