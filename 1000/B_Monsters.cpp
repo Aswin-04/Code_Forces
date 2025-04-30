@@ -87,25 +87,26 @@ void solve() {
 }
 
 void solve1() {
-    int n, k;
-    cin >> n >> k;
+  int n, k;
+  cin >> n >> k;
 
-    vi arr(n);
-    for(auto &i: arr) cin >> i;
+  vi arr(n);
+  for(auto &i: arr) cin >> i;
+  for(auto &i: arr) i = i%k;
 
-    vector<pii> hp_idx;
-    for(int i=0; i < n; i++) {
-      if(arr[i]%k == 0) hp_idx.pb(mp(k, -i));
-      else hp_idx.pb(mp(arr[i]%k, -i));
-    }
+  vector<pii> vp;
+  for(int i=0; i < n; i++) {
+    if(arr[i] == 0) cout << i+1 << sp;
+    else vp.pb(mp(arr[i], 0-(i+1))); 
+  }
 
-    debug(hp_idx)
-    sort(all(hp_idx));
-    debug(hp_idx)
-    
-    for(int i=n-1; i >=0; i--) cout << abs(hp_idx[i].second)+1 << sp;
-    cout << nline;
-    
+  sort(all(vp), greater<pii>());
+  debug(vp)
+  for(pii p: vp) {
+    cout << 0 - p.second << sp;
+  }
+
+  cout << nline;
 }
 
 
