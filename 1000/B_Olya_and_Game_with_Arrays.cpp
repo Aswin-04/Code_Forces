@@ -58,37 +58,44 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n;
-    cin >> n;
+  int n;
+  cin >> n;
 
-    vii arr;
+  int mn = INT_MAX;
+  vi min_arr;
+  for(int i=0; i < n; i++) {
+    int m;
+    cin >> m;
+    int mn1 = INT_MAX;
+    int mn2 = INT_MAX;
+    int val;
+    for(int i=0; i < m; i++) {
+      cin >> val;
+      if(val < mn1) {
+        mn2 = mn1;
+        mn1 = val;
+      }
 
-    for(int i=1; i <= n; i++) {
-      int m;
-      cin >> m;
-      vi v(m);
-      for(auto &i: v) cin >> i;
-      sort(all(v));
-      arr.pb(v); 
+      else if(val < mn2) mn2 = val;
     }
+    mn = min(mn, mn1);
+    min_arr.pb(mn2);
+  }
 
-    debug(arr)
+  debug(min_arr)
 
-    int mini1 = INT_MAX;
-    int mini2 = INT_MAX;
-    ll mini2_sum = 0;
+  ll ans = 0;
+  int mini = INT_MAX;
 
-    for(int i=0; i < n; i++) {
-      mini1 = min(mini1, arr[i][0]);
-      mini2 = min(mini2, arr[i][1]);
-      mini2_sum+=arr[i][1];
-    }
+  for(int i=0; i < min_arr.size(); i++) {
+    ans+=min_arr[i];
+    mini = min(mini, min_arr[i]);
+  }
 
-    debug(mini1)
+  ans-=mini;
+  ans+=mn;
 
-    cout << mini1 + (mini2_sum - mini2*1LL) << nline;
-
-
+  cout << ans << nline;
 }
 
 int main() {
