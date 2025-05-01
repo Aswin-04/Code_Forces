@@ -58,52 +58,30 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n, k, q;
-    cin >> n >> k >> q;
+  int n, k, q;
+  cin >> n >> k >> q;
+  
+  vi arr(n);
+  for(auto &i: arr) cin >> i;
 
-    vi arr(n);
-    for(auto &i: arr) cin >> i;
+  int len = 0;
+  ll ans = 0;
 
-    ll ans = 0;
-    int freq = 0;
-
-    for(int i=0; i < n; i++) {  
-
-      if(arr[i] <= q) {
-        freq++;
-        continue;
+  for(int val: arr) {
+    if(val <= q) len++;
+    else {
+      if(len >= k) {
+        ans+=((1LL*(len-k+1)*(len-k+2))/2);
       }
-
-      if(freq < k) {
-        freq = 0;
-        continue;
-      }
-      ll sum =  (1LL*freq * (freq+1))/2;
-      int j=1;
-      ll rem = 0;
-      while(j < k) {
-        rem+=(freq-(j-1));
-        j++;
-      }
-
-      ans+=(sum-rem);
-      debug(freq)
-      freq = 0;
+      len = 0;
     }
+  }
 
-    if(freq >= k) {
-      ll sum =  (1LL*freq * (freq+1))/2;
-      int j=1;
-      ll rem = 0;
-      while(j < k) {
-        rem+=(freq-(j-1));
-        j++;
-      }
+  if(len >= k) {
+    ans+=((1LL*(len-k+1)*(len-k+2))/2);
+  }
 
-      ans+=(sum-rem);
-    }
-
-    cout << ans << nline;
+  cout << ans << nline;
 }
 
 int main() {
