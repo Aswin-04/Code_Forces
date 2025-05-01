@@ -58,47 +58,59 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n;
-    cin >> n;
 
-    vi a(n);
-    vi b(n);
-    for(auto &i: a) cin >> i;
-    for(auto &i: b) cin >> i;
+  int n;
+  cin >> n;
 
-    si st;
-    for(int i=0; i < n; i++) {
-      st.insert(a[i]);
-      st.insert(b[i]);
+  vi arr(n+1);
+  vi brr(n+1);
+  for(int i=1; i <= n; i++) cin >> arr[i];
+  for(int i=1; i <= n; i++) cin >> brr[i];
+
+  vi freq1(2*n+1);
+  vi freq2(2*n+1);
+  
+  int i=1, j=1, cnt=0;
+  while(j <= n) {
+    if(arr[i] == arr[j]) {
+      cnt++;
+      j++;
+      continue;
     }
 
-    mii mp1, mp2;
-    mp1[a[0]]++;
-    int cnt = 1;
-
-    for(int i=1; i < n; i++) {
-      if(a[i] == a[i-1]) cnt++;
-      else cnt = 1;
-
-      mp1[a[i]] = max(mp1[a[i]], cnt);
-    }
-
-    mp2[b[0]]++;
+    freq1[arr[i]] = max(freq1[arr[i]], cnt);
+    i=j;
+    j++;
     cnt = 1;
+  }
 
-    for(int i=1; i < n; i++) {
-      if(b[i] == b[i-1]) cnt++;
-      else cnt = 1;
+  freq1[arr[i]] = max(freq1[arr[i]], cnt);
 
-      mp2[b[i]] = max(mp2[b[i]], cnt);
+  i=1, j=1, cnt=0;
+  while(j <= n) {
+    if(brr[i] == brr[j]) {
+      cnt++;
+      j++;
+      continue;
     }
 
-    ll max_cnt = 0;
-    for(int i: st) {
-      max_cnt = max(max_cnt, 1LL*mp1[i]+mp2[i]);
-    }
+    freq2[brr[i]] =  max(freq2[brr[i]], cnt);
+    i=j;
+    j++;
+    cnt = 1;
+  }
 
-    cout << max_cnt << nline;
+  freq2[brr[i]] = max(freq2[brr[i]], cnt);
+
+  debug(freq1)
+  debug(freq2)
+
+  int max_cnt = 0;
+  for(int i=1; i <= 2*n+1; i++) {
+    max_cnt = max(max_cnt, freq1[i]+freq2[i]);
+  }
+
+  cout << max_cnt << nline;
 }
 
 int main() {
