@@ -58,16 +58,16 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n;
-    cin >> n;
+  int n;
+  cin >> n;
 
-    int largest_factor = 1;
-    for(int i=2; i*i <= n; i++) {
-      if(n%i != 0) continue;
-      largest_factor= max(largest_factor, n/i);
-    }
+  int largest_factor = 1;
+  for(int i=2; i*i <= n; i++) {
+    if(n%i != 0) continue;
+    largest_factor = max(largest_factor, n/i); 
+  }
 
-    cout << largest_factor << sp << n-largest_factor << nline;
+  cout << largest_factor << sp << n-largest_factor << nline;
 }
 
 int main() {
