@@ -58,28 +58,30 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n;
-    cin >> n;
+  int n;
+  cin >> n;
 
-    string s;
-    cin >> s;
+  string s;
+  cin >> s;
 
-    map<char, int> mp_a;
-    map<char, int> mp_b;
+  vi freq1(26);
+  vi freq2(26);
 
-    for(char c: s) mp_b[c]++;
+  for(char ch: s) freq1[ch-'a']++;
 
-    int maxi = 0;
-    for(char c: s) {
-        mp_b[c]--;
-        if(mp_b[c] == 0) mp_b.erase(c);
-        mp_a[c]++;
-        int cnt1 = mp_a.size();
-        int cnt2 = mp_b.size();
-        maxi = max(maxi, cnt1+cnt2);
+  int max_cnt = 0;
+  for(char ch: s) {
+    freq1[ch-'a']--;
+    freq2[ch-'a']++;
+
+    int crnt_cnt= 0;
+    for(int i=0; i < 26; i++) {
+      crnt_cnt+= (min(1, freq1[i]) + min(1, freq2[i]) );
     }
+    max_cnt = max(max_cnt, crnt_cnt);
+  }
 
-    cout << maxi << nline;
+  cout << max_cnt << nline;
 }
 
 int main() {
