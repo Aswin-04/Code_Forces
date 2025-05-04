@@ -58,33 +58,31 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n, D;
-    cin >> n >> D;
+    int n, d;
+    cin >> n >> d;
 
-    vi P(n);
-    for(auto &i: P) cin >> i;
-    sort(all(P));
+    vi powers(n);
+    for(auto &i: powers) cin >> i;
+
+    sort(all(powers));
 
     int i=0;
     int j=n-1;
 
-    ll team_power = 0;
+    ll team_power;
     int wins = 0;
 
-    debug(P)
-
     while(i <= j) {
-      team_power = P[j];
-      while(i < j && team_power <= D) {
-        team_power+=P[j];
+      team_power = powers[j];
+      while(i < j && team_power <= d) {
+        team_power+=powers[j];
         i++;
       }
-      if(team_power > D) wins++;
-      if(i == j) break;
 
+      if(team_power > d) wins++;
+      if(i == j) break;
       j--;
     }
-
 
     cout << wins << nline;
 }
