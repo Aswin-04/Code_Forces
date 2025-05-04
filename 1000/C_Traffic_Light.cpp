@@ -104,26 +104,46 @@ void solve() {
     
 }
 
+
+int get_up(int i, vi& green_arr) {
+  int low = 0;
+  int high = green_arr.size()-1;
+
+  while(low < high) {
+    int mid = low + ((high-low) >> 2);
+    if(green_arr[mid] <= i) low = mid+1;
+    else high = mid;
+  }
+
+  return green_arr[high];
+}
+
 void solve2() {
-    int n;
-    char c;
-    string s;
+  int n;
+  cin >> n;
+  char c;
+  cin >> c;
+  string s;
+  cin >> s;
 
-    cin >> n >> c;
-    cin >> s;
+  s+=s;
 
-    int last = -1;
-    int ans = INT_MIN;
+  if(c == 'g') {
+    cout << 0 << nline;
+    return;
+  }
+  vi green_arr;
+  for(int i=0; i < s.size(); i++) {
+    if(s[i] == 'g') green_arr.pb(i);
+  } 
 
-    s.append(s);
-    for(int i=s.size()-1; i >= 0; i--) {
-      if(s[i] == 'g') last = i;
-      if(s[i] == c) {
-        ans = max(ans, last-i);
-      }
-    }
+  int mx = 0;
+  for(int i=0; i < n; i++) {
+    if(s[i] == c) mx = max(mx, get_up(i, green_arr) - i);
+  }
 
-    cout << ans << nline;
+  cout << mx << nline;
+
 }
 
 int main() {
