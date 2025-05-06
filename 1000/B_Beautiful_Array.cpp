@@ -146,6 +146,43 @@ void solve2() {
   cout << nline;
 }
 
+
+
+
+void solve3() {
+  ll n, k, b, s;
+  cin >> n >> k >> b >> s;
+
+  if(k * b > s) {
+    cout << -1 << nline;
+    return;
+  }
+
+  vll ans(n);
+  ans[0] = k*b;
+  ll rem = s-(k*b);
+
+  for(int i=0; i < n; i++) {
+    ans[i]+=min(k-1, rem);
+    rem-=min(k-1, rem);
+  }
+
+  if(rem) {
+    cout << - 1 << nline;
+    return;
+  }
+
+  for(int i=0; i < n; i++) {
+    cout << ans[i] << sp;
+  }
+
+  cout << nline;
+}
+
+
+
+
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -155,7 +192,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve2();
+        solve3();
     }
     
     return 0;
