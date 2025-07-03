@@ -179,10 +179,6 @@ void solve3() {
   cout << nline;
 }
 
-
-
-
-
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
