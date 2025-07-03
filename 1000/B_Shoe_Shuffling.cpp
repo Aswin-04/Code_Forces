@@ -103,6 +103,51 @@ void solve() {
     cout << nline;
 }
 
+void solve_new() {
+    int n;
+    cin >> n;
+
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
+
+    int start = 1;
+    int end = 1;
+    int prev = arr[0];
+    vector<pii> vp;
+    int i=0;
+    int flag = 0;
+    while(i < n) {
+        if(arr[i] == prev) {
+            end = i+1;
+            i++;
+        }
+
+        else {
+            if(start == end) flag = 1;
+            vp.push_back({start, end});
+            start = i+1;
+            end = start;
+            prev = arr[i];
+        }
+    }
+    
+    vp.push_back({start, end});
+
+    if(start == end) flag = 1;
+    if(flag) {
+        cout << -1 << nline;
+        return;
+    }
+    
+    for(auto [start, end]: vp) {
+        cout << end << sp;
+        for(int i=start; i < end; i++) {
+            cout << i << sp;
+        }
+    }
+    cout << nline;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -112,7 +157,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve_new();
     }
     
     return 0;
