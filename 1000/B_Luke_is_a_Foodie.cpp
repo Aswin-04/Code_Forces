@@ -60,27 +60,30 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 void solve() {
     int n, x;
     cin >> n >> x;
-
+    
     vi arr(n);
     for(auto &i: arr) cin >> i;
 
-    int l = INT_MIN;
-    int r = INT_MAX;
-    int change = 0;
+    int mn_range = arr[0]-x;
+    int mx_range = arr[0]+x;
+    int changes = 0;
+    
+    for(int pile: arr) {
+        int lower = pile-x;
+        int upper = pile+x;
 
-    for(int i=0; i < n; i++) {
-      int crnt_l = arr[i]-x;
-      int crnt_r = arr[i]+x;
-      l = max(l, crnt_l);
-      r = min(r, crnt_r);
+        if(lower > mx_range || upper < mn_range) {
+            changes++;
+            mn_range = lower;
+            mx_range = upper;
+        } 
 
-      if(l > r) {
-        change++;
-        l = crnt_l;
-        r = crnt_r;
-      }
+        mn_range = max(mn_range, lower);
+        mx_range = min(mx_range, upper);
     }
-    cout << change << nline;
+
+    cout << changes << nline;
+
 }
 
 int main() {
