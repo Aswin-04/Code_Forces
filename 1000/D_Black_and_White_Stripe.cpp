@@ -86,6 +86,33 @@ void solve() {
     cout << ans << nline;
 }
 
+void solve_new() {
+    int n, k;
+    cin >> n;
+
+    string s;
+    cin >> s;
+
+    int black_cnt = 0;
+    int i, j;
+
+    for(j=0; j < k; j++) {
+        if(s[i] == 'B') black_cnt++;
+    }
+    int res = k-black_cnt;
+
+    i=0;
+    while(j < n) {
+        if(s[i] == 'B') black_cnt--;
+        if(s[j] == 'B') black_cnt++;
+        res = min(res, k-black_cnt);
+        i++;
+        j++;
+    }
+
+    cout << res << endl;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
