@@ -107,6 +107,24 @@ void solve() {
     cout << ans << nline;
 }
 
+void solve_new() {
+    int n, r, b;
+    cin >> n >> r >> b;
+
+    int p = r/(b+1);
+    int q = r%(b+1);
+
+    for(int i=0; i < q; i++) {
+        cout << string(p+1, 'R') << 'B';
+    }
+
+    for(int i=q; i < b; i++) {
+        cout << string(p, 'R') << 'B';
+    }
+
+    cout << string(p, 'R') << nline;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -116,7 +134,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve2();
+        solve_new();
     }
     
     return 0;
