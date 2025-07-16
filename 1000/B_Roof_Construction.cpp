@@ -83,6 +83,32 @@ void solve() {
     cout << nline;
 }
 
+void solve2() {
+    int n;
+    cin >> n;
+
+    int swift = 0;
+
+    while((1 << swift) < n) {
+        swift++;
+    }
+
+    swift--;
+    int max_pow2 = (1 << swift);
+
+    for(int i=1; i < max_pow2; i++) {
+        cout << i << sp;
+    }
+
+    cout << 0 << sp;
+
+    for(int i=max_pow2; i < n; i++) {
+        cout << i << sp;
+    }
+
+    cout << nline;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -92,7 +118,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve2();
     }
     
     return 0;
