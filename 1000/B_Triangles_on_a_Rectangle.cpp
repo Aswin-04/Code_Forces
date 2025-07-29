@@ -78,6 +78,22 @@ void solve() {
   cout << ans << nline;
 }
 
+
+void solve_new() {
+    ll w, h;
+    cin >> w >> h;
+    ll ans = 0;
+    for(int i=0; i < 4; i++) {
+        ll k;
+        cin >> k;
+        vll points(k);
+        for(auto &i: points) cin >> i;
+        ans = max(ans, 1LL * abs(points[0]-points[k-1]) * ((i < 2) ? h : w));
+    }
+
+    cout << ans << endl;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -87,7 +103,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve_new();
     }
     
     return 0;
