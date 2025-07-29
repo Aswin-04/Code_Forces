@@ -89,6 +89,40 @@ void solve() {
     cout << nline;
 }
 
+void solve_new() {
+    int n;
+    cin >> n;
+
+    vector<pair<int, int>> visits(n+1);
+
+    for(int i=1; i <= n; i++) {
+        cin >> visits[i].first;
+        visits[i].second = i;
+    }
+
+    sort(visits.begin()+1, visits.end(), greater<pair<int, int>>());
+
+    vi config(n+1);
+    int curr_cord = 1;
+    ll total_time = 0;
+
+    for(int i=1; i <= n; i++) {
+        total_time+=(1LL*2*visits[i].first*curr_cord);
+        if(i&1) {
+            config[visits[i].second] = curr_cord;
+        }
+
+        else {
+            config[visits[i].second] = -curr_cord;
+            curr_cord++;
+        }
+    }
+
+    cout << total_time << nline;
+    for(auto i: config) cout << i << sp;
+    cout << endl;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -98,7 +132,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve_new();
     }
     
     return 0;
