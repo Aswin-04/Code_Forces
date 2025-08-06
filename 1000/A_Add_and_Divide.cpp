@@ -76,6 +76,27 @@ void solve() {
     cout << ans << nline;
 }
 
+void solve_new() {
+    int a, b;
+    cin >> a >> b;
+
+    int ans = 1e9;
+    for(int i=0; i < 30; i++) {
+        int turns = i;
+        int x = a;
+
+        if(b+i < 2) continue;
+        while(x > 0) {
+            x/=(b+i);
+            turns++;
+        }
+
+        ans = min(ans, turns);
+    }
+
+    cout << ans << nline;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -85,7 +106,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve_new();
     }
     
     return 0;
