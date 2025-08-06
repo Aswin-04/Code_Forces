@@ -84,6 +84,26 @@ void solve() {
     cout << (sz(a) - substr_len) + (sz(b)-substr_len)<< nline;
 }
 
+void solve_new() {
+    string a, b;
+    cin >> a;
+    cin >> b;
+
+    if(sz(a) > sz(b)) swap(a,b);
+
+    int substr_len = 0;
+    for(int i=0; i < a.size(); i++) {
+        string temp = "";
+        for(int j=i; j < a.size(); j++) {
+            temp+=a[j];
+            if(b.find(temp) == string::npos) break;
+            substr_len = max(substr_len, sz(temp)); 
+        }
+    } 
+
+    cout << (sz(a)-substr_len) + (sz(b)-substr_len) << endl;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -93,7 +113,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve_new();
     }
     
     return 0;
