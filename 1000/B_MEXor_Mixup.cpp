@@ -74,6 +74,23 @@ void solve() {
     else cout << a+2 << nline;
 }
 
+void solve_new() {
+    int a, b;
+    cin >> a >> b;
+
+    int xors = 0;
+    int last = a-1;
+
+    if(last%4 == 0) xors = last;
+    else if(last%4 == 1) xors = 1;
+    else if(last%4 == 2) xors = last+1;
+    else xors = 0;
+
+    if(xors == b) cout << a << endl;
+    else if((xors^b) != a) cout << a+1 << endl;
+    else cout << a+2 << endl;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -83,7 +100,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve_new();
     }
     
     return 0;
