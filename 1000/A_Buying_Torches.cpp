@@ -61,10 +61,9 @@ void solve() {
     int x, y, k;
     cin >> x >> y >> k;
 
-    ll requried_sticks = (k-1) + (1LL*y*k);
-    ll cnt_req = (requried_sticks+x-2)/(x-1);
-    ll ans = cnt_req+k;
-    cout << ans << nline;
+    ll target = 1ll*(k-1+(1ll*y*k)+x-2)/(x-1);
+    target+=k;
+    cout << target << nline;
 }
 
 int main() {
