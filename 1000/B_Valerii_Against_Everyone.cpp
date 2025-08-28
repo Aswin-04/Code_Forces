@@ -73,6 +73,22 @@ void solve() {
 
 }
 
+void solve_new() {
+    int n;
+    cin >> n;
+
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
+
+    si st;
+    for(int i=0; i < n; i++) {
+        st.insert(arr[i]);
+    }
+
+    if(sz(st) != n) cout << "YES\n"; 
+    else cout << "NO\n";
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -82,7 +98,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve_new();
     }
     
     return 0;
