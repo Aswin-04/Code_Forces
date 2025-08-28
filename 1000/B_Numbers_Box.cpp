@@ -27,7 +27,7 @@ typedef long double ld;
 typedef pair<int, int> pii;
 typedef pair<long, long> pll;
 typedef vector<int> vi;
-typedef vector<vector<int>> vii;
+typedef vector<vector<int>> vvi;
 typedef vector<long long> vll;
 typedef map<int, int> mii;
 typedef set<int> si;
@@ -61,7 +61,7 @@ void solve() {
     int n, m;
     cin >> n >> m;
 
-    vii rect(n, vi(m));
+    vvi rect(n, vi(m));
     int mini = INT_MAX;
     int neg_cnt = 0;
     int sum = 0;
@@ -78,6 +78,29 @@ void solve() {
     else cout << sum << nline;
 }
 
+void solve2() {
+    int n, m;
+    cin >> n >> m;
+
+    int neg_cnt = 0;
+    int mn = INT_MAX;
+    int sum = 0;
+    int val;
+
+    for(int i=0; i < n; i++) {
+        for(int j=0; j < m; j++) {
+            cin >> val;
+            if(val < 0) neg_cnt++;
+            val = abs(val);
+            sum+=val;
+            mn = min(mn, val);
+        }
+    }
+    
+    if(neg_cnt&1) cout << sum-(2*mn) << nline;
+    else cout << sum << nline;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -87,7 +110,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve2();
     }
     
     return 0;
