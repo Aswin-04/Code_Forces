@@ -74,6 +74,29 @@ void solve() {
     cout << n << nline;
 }
 
+bool is_fair_num(unsigned long long n) {
+    unsigned long long temp = n;
+    while(temp) {
+        int crnt_digit = temp%10;
+        if(crnt_digit != 0 && n%crnt_digit != 0) {
+            return false;
+        }
+        temp/=10;
+    }
+
+    return true;
+}
+
+void solve_new() {
+    unsigned long long n;
+    cin >> n;
+
+    while(!is_fair_num(n)) {
+        n++;
+    }
+    cout << n << nline;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -83,7 +106,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve_new();
     }
     
     return 0;
