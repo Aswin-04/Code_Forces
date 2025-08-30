@@ -77,6 +77,30 @@ void solve() {
     cout << abs(min_cnt) << nline;
 }
 
+
+void solve_new() {
+    int n;
+    cin >> n;
+
+    string s;
+    cin >> s;
+
+    int ctr = 0;
+    int ans = 0;
+
+    for(char ch: s) {
+        if(ch == '(') {
+            ctr++;
+            ctr = max(ctr, 1);
+        }
+        else ctr--;
+        if(ctr < 0 && ch == ')') ans++;
+
+    }
+
+    cout << ans << nline;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -86,7 +110,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve_new();
     }
     
     return 0;
