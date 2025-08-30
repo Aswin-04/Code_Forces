@@ -69,6 +69,17 @@ void solve() {
     cout << nline;
 }
 
+void solve_new() {
+    int n;
+    cin >>n;
+
+    vi arr(n);
+    for(auto &i: arr) cin >> i;
+    sort(all(arr), greater<int>());
+    for(auto i: arr) cout << i << sp;
+    cout << nline;
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
@@ -78,7 +89,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve_new();
     }
     
     return 0;
