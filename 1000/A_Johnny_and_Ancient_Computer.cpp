@@ -81,48 +81,32 @@ void solve() {
   cout << (diff+2)/3 << nline;
 }
 
-void solve1() {
+void solve_new() {
     ll a, b;
     cin >> a >> b;
 
-    if(a == b) {
-      cout << 0 << nline;
-      return;
+    ll ra, rb;
+    ra = a, rb = b;
+
+    while(ra%2 == 0) {
+        ra/=2;
     }
 
-    ll val = a;
-    int cnt = 0;
-    if(a > b) {
-      int flag = 0;
-      while(val) {
-        if(val == b) break;
-        if(val < b || val%2 == 1) {
-          flag = 1;
-          break;
-        }
-        val/=2;
-        cnt++;
-      }
-
-      if(val == 0 || flag) cout << -1 << nline;
-      else cout << (cnt+2)/3 << nline;
+    while(rb%2 == 0) {
+        rb/=2;
     }
 
-    else {
-      int flag = 0;
-      while(val <= 1e18) {
-        if(val == b) break;
-        if(val > b || (val*2) > 1e18) {
-          flag = 1;
-          break;
-        }
-        val*=2;
-        cnt++;
-      }
-
-      if(flag) cout << -1 << nline;
-      else cout << (cnt+2)/3 << nline;
+    if(ra != rb) {
+        cout << -1 << nline;
+        return;
     }
+
+    a/=ra;
+    b/=rb;
+    a = log2(a);
+    b = log2(b);
+
+    cout << (abs(a-b)+2)/3 << nline;
 }
 
 int main() {
@@ -134,7 +118,7 @@ int main() {
     cin >> t;
 
     while(t--) {
-        solve();
+        solve_new();
     }
     
     return 0;
