@@ -74,12 +74,30 @@ void solve() {
     cout << "NO" << nline;
 }
 
+void solve_new() {
+    int n;
+    cin >> n;
+
+    string s;
+    cin >> s;
+
+    for(int i=1; i < n; i++) {
+        if(s[i-1] > s[i]) {
+            cout << "YES\n";
+            cout << i << sp << i+1 << nline;
+            return;
+        }
+    }
+
+    cout << "NO\n";
+}
+
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("error.txt", "w", stderr);
     #endif
 
-    solve();
+    solve_new();
     
     return 0;
 }
