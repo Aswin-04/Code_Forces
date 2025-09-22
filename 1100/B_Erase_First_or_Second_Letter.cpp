@@ -27,7 +27,7 @@ typedef long double ld;
 typedef pair<int, int> pii;
 typedef pair<long, long> pll;
 typedef vector<int> vi;
-typedef vector<vector<int>> vii;
+typedef vector<vector<int>> vvi;
 typedef vector<long long> vll;
 typedef map<int, int> mii;
 typedef set<int> si;
@@ -58,40 +58,25 @@ template<class T, class V> void _print(unordered_map<T, V> m) {cerr << "[\n"; ce
 
 
 void solve() {
-    int n;
-    cin >> n;
+  int n;
+  cin >> n;
 
-    string s;
-    cin >> s;
+  string s;
+  cin >> s;
 
-    for(int i=1; i < n; i++) {
-      if(s[i] < s[i-1]) {
-        cout << "YES" << nline;
-        cout << i << sp << i+1 << nline;
-        return;
-      }
+  map<char, int> freq;
+  int count = 0;
+  vi distinct(n);
+  for(int i=0; i < n; i++) {
+    if(freq.find(s[i]) == freq.end()) {
+      freq[s[i]] = 1;
+      count++;
     }
-    cout << "NO" << nline;
-}
-
-void solve_new() {
-    int n;
-    cin >> n;
-
-    string s;
-    cin >> s;
-
-    debug(s)
-
-    for(int i=1; i < n; i++) {
-        if(s[i-1] > s[i]) {
-            cout << "YES\n";
-            cout << i << sp << i+1 << nline;
-            return;
-        }
-    }
-
-    cout << "NO\n";
+    distinct[i] = count;
+  }
+  long long ans = 0;
+  for(int cnt: distinct) ans+=cnt;
+  cout << ans << nline; 
 }
 
 int main() {
@@ -99,7 +84,12 @@ int main() {
         freopen("error.txt", "w", stderr);
     #endif
 
-    solve_new();
+    int t;
+    cin >> t;
+
+    while(t--) {
+        solve();
+    }
     
     return 0;
 }
